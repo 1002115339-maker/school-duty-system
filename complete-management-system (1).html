@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת ניהול תורנויות - בית הספר</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 7px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab:hover {
+            background: #f3f4f6;
+        }
+        
+        .tab.active {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .card h2 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #6b7280;
+            font-size: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .badge-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .badge-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .button {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        
+        .button-secondary {
+            background: #6b7280;
+        }
+        
+        .button-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .field-assignments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .field-card {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .field-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .field-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .field-grade {
+            background: #2563eb;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .day-column {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .day-header {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #374151;
+        }
+        
+        .duty-slot {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .duty-type {
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+        
+        .teacher-name {
+            color: #374151;
+        }
+        
+        .location {
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .notification-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .notification-panel.show {
+            display: block;
+            animation: slideIn 0.3s;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        
+        .notification-item {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 10px;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏫 מערכת ניהול תורנויות</h1>
+            <div class="subtitle">32 מורות • 3 משמרות יומיות • ניהול חכם</div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('dashboard')">📊 דאשבורד</div>
+            <div class="tab" onclick="showTab('schedule')">📅 לוח תורנויות</div>
+            <div class="tab" onclick="showTab('teachers')">👩‍🏫 מורות</div>
+            <div class="tab" onclick="showTab('reports')">📈 דוחות</div>
+            <div class="tab" onclick="showTab('notifications')">🔔 התראות</div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard" class="content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">מורות פעילות</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">תורנויות היום</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">אחוז דיווח</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">החלפות השבוע</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📍 חלוקת מגרשים להיום</h2>
+                <div class="field-assignments" id="fieldAssignments"></div>
+            </div>
+
+            <div class="card">
+                <h2>⏰ תורנויות היום</h2>
+                <div id="todayDuties"></div>
+            </div>
+
+            <div class="card">
+                <h2>📋 דיווחים אחרונים</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>שעה</th>
+                            <th>מורה</th>
+                            <th>תורנות</th>
+                            <th>סטטוס</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentReports">
+                        <tr>
+                            <td>07:45</td>
+                            <td>שרית שרון</td>
+                            <td>תורנות בוקר</td>
+                            <td><span class="badge badge-success">דווח</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Schedule Content -->
+        <div id="schedule" class="content">
+            <div class="card">
+                <h2>📅 לוח תורנויות שבועי</h2>
+                <div class="schedule-grid" id="weeklySchedule"></div>
+            </div>
+        </div>
+
+        <!-- Teachers Content -->
+        <div id="teachers" class="content">
+            <div class="card">
+                <h2>👩‍🏫 רשימת מורות</h2>
+                <input type="text" class="search-box" placeholder="חיפוש מורה..." id="teacherSearch">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>שם</th>
+                            <th>טלפון</th>
+                            <th>תורנויות השבוע</th>
+                            <th>סטטוס</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teachersList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reports Content -->
+        <div id="reports" class="content">
+            <div class="card">
+                <h2>📈 דוחות חודשיים</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">276</div>
+                        <div class="stat-label">תורנויות החודש</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">אחוז ביצוע</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">החלפות</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">הערות</div>
+                    </div>
+                </div>
+                
+                <button class="button" onclick="exportReport()">📥 ייצוא לאקסל</button>
+            </div>
+        </div>
+
+        <!-- Notifications Content -->
+        <div id="notifications" class="content">
+            <div class="card">
+                <h2>🔔 הגדרות התראות</h2>
+                <p>התראות אוטומטיות למורות התורניות</p>
+                
+                <div style="margin-top: 20px;">
+                    <label>
+                        <input type="checkbox" checked> תזכורת 10 דקות לפני תורנות
+                    </label><br><br>
+                    <label>
+                        <input type="checkbox" checked> התראה על אי-דיווח
+                    </label><br><br>
+                    <label>
+                        <input type="checkbox"> סיכום יומי ב-20:00
+                    </label>
+                </div>
+                
+                <button class="button" style="margin-top: 20px;">💾 שמור הגדרות</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Complete duty schedule data
+        const scheduleData = {
+  "schedule": {
+    "sunday": {
+      "morning": [
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרית",
+          "teacherId": "2", 
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה ב' בניין מרכזי", 
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שירה",
+          "teacherId": "16",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ראוון",
+          "teacherId": "17",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "קרן הלוי",
+          "teacherId": "19",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "monday": {
+      "morning": [
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "ירונה",
+          "teacherId": "9",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שרית",
+          "teacherId": "2",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עדן",
+          "teacherId": "20",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ראוון",
+          "teacherId": "17",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "tuesday": {
+      "morning": [
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חיה",
+          "teacherId": "1",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שירה",
+          "teacherId": "16",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "wednesday": {
+      "morning": [
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "עינת",
+          "teacherId": "23",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שלי",
+          "teacherId": "24",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "thursday": {
+      "morning": [
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עדן",
+          "teacherId": "20",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עינת",
+          "teacherId": "23",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מילי",
+          "teacherId": "25",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "קרן הלוי",
+          "teacherId": "19",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "שרית",
+          "teacherId": "2",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "friday": {
+      "morning": [
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "ירונה",
+          "teacherId": "9",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חיה",
+          "teacherId": "1",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מילי",
+          "teacherId": "25",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שלי",
+          "teacherId": "24",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": []
+    }
+  },
+  "fieldAssignments": {
+    "basketball": {
+      "sunday": "ה",
+      "monday": "ו",
+      "tuesday": "ב",
+      "wednesday": "ד",
+      "thursday": "ג",
+      "friday": "ו"
+    },
+    "dodgeball": {
+      "sunday": "ב",
+      "monday": "ד",
+      "tuesday": "ה",
+      "wednesday": "ג",
+      "thursday": "ו",
+      "friday": "ד"
+    },
+    "westernPath": {
+      "sunday": "ה",
+      "monday": "ב",
+      "tuesday": "ה",
+      "wednesday": "ו",
+      "thursday": "ד",
+      "friday": "ג"
+    }
+  },
+  "teachers": [
+    { "id": "1", "name": "כהן כליפה ג'ני חיה", "phone": "052-864-9524" },
+    { "id": "2", "name": "שרון שרית", "phone": "052-330-1068" },
+    { "id": "3", "name": "סבג דניאלה", "phone": "052-808-9942" },
+    { "id": "4", "name": "שלי שרונה", "phone": "052-831-2325" },
+    { "id": "5", "name": "טליאס ז'אן לורן", "phone": "052-866-9363" },
+    { "id": "6", "name": "יאקרן אלכסנדרה", "phone": "050-952-0266" },
+    { "id": "7", "name": "מזרחי אתי", "phone": "052-831-6062" },
+    { "id": "8", "name": "פנסו חיננית", "phone": "050-373-1199" },
+    { "id": "9", "name": "בן הלל ירונה", "phone": "050-664-4040" },
+    { "id": "10", "name": "שילה מיכל", "phone": "052-646-3311" },
+    { "id": "11", "name": "ברק גילי", "phone": "052-847-5700" },
+    { "id": "12", "name": "בן דוד יובל", "phone": "052-868-2636" },
+    { "id": "13", "name": "יובל דיין", "phone": "052-610-0980" },
+    { "id": "14", "name": "אלישבע מנשה", "phone": "052-713-9328" },
+    { "id": "15", "name": "אלגלי הדס", "phone": "054-550-1003" },
+    { "id": "16", "name": "אליאס לוגסי שירה", "phone": "050-998-8484" },
+    { "id": "17", "name": "חוש רואן", "phone": "050-883-3394" },
+    { "id": "18", "name": "נגביקר ליעז", "phone": "054-463-4345" },
+    { "id": "19", "name": "הלוי קרן", "phone": "050-544-6416" },
+    { "id": "20", "name": "אטון עדן", "phone": "054-638-1810" },
+    { "id": "21", "name": "בונן חן", "phone": "050-430-8551" },
+    { "id": "22", "name": "קריטמלר מדלן", "phone": "053-700-4486" },
+    { "id": "23", "name": "חסין עינת", "phone": "050-212-6120" },
+    { "id": "24", "name": "ברוכים שלי", "phone": "054-638-2124" },
+    { "id": "25", "name": "פכטר מילי", "phone": "050-766-6639" },
+    { "id": "26", "name": "טבעוני יעל", "phone": "052-333-5871" },
+    { "id": "27", "name": "הרוש לימור", "phone": "054-444-8521" },
+    { "id": "28", "name": "דהן אורית", "phone": "050-222-7456" },
+    { "id": "29", "name": "כץ נעמי", "phone": "052-777-1234" },
+    { "id": "30", "name": "לוי דנה", "phone": "054-888-4567" },
+    { "id": "31", "name": "אמסלם רונית", "phone": "050-999-7890" },
+    { "id": "32", "name": "זוהר נורית", "phone": "052-555-3698" }
+  ]
+};
+
+        const HEBREW_DAYS = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'];
+        const DUTY_TYPES = {
+            morning: { label: 'תורנות בוקר', icon: '🌅' },
+            bigBreak: { label: 'הפסקה גדולה', icon: '☕' },
+            smallBreak: { label: 'הפסקה קטנה', icon: '🍽️' }
+        };
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderFieldAssignments();
+            renderTodayDuties();
+            renderWeeklySchedule();
+            renderTeachersList();
+        });
+
+        function showTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active to selected tab
+            event.target.classList.add('active');
+        }
+
+        function renderFieldAssignments() {
+            const container = document.getElementById('fieldAssignments');
+            const day = new Date().getDay();
+            const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const currentDay = dayNames[day];
+            
+            const fields = [
+                { name: 'כדורסל/כדורגל', icon: '🏀', key: 'basketball' },
+                { name: 'מחניים', icon: '🎯', key: 'dodgeball' },
+                { name: 'שביל מערבי', icon: '🛤️', key: 'westernPath' }
+            ];
+            
+            let html = '';
+            fields.forEach(field => {
+                const grade = scheduleData.fieldAssignments[field.key][currentDay] || '-';
+                html += `
+                    <div class="field-card">
+                        <div class="field-icon">${field.icon}</div>
+                        <div class="field-name">${field.name}</div>
+                        <div class="field-grade">שכבה ${grade}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function renderTodayDuties() {
+            const container = document.getElementById('todayDuties');
+            const day = new Date().getDay();
+            const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const currentDay = dayNames[day];
+            
+            if (day === 6) {
+                container.innerHTML = '<p>אין תורנויות בשבת</p>';
+                return;
+            }
+            
+            const todaySchedule = scheduleData.schedule[currentDay];
+            let html = '<table><thead><tr><th>שעה</th><th>סוג תורנות</th><th>מורה</th><th>מיקום</th></tr></thead><tbody>';
+            
+            // Morning duties
+            todaySchedule.morning.forEach(duty => {
+                html += `<tr>
+                    <td>${duty.time}</td>
+                    <td>${DUTY_TYPES.morning.icon} ${DUTY_TYPES.morning.label}</td>
+                    <td>${duty.teacherName}</td>
+                    <td>${duty.location}</td>
+                </tr>`;
+            });
+            
+            // Big break duties
+            todaySchedule.bigBreak.forEach(duty => {
+                html += `<tr>
+                    <td>${duty.time}</td>
+                    <td>${DUTY_TYPES.bigBreak.icon} ${DUTY_TYPES.bigBreak.label}</td>
+                    <td>${duty.teacherName}</td>
+                    <td>${duty.location}</td>
+                </tr>`;
+            });
+            
+            // Small break duties
+            if (todaySchedule.smallBreak && todaySchedule.smallBreak.length > 0) {
+                todaySchedule.smallBreak.forEach(duty => {
+                    html += `<tr>
+                        <td>${duty.time}</td>
+                        <td>${DUTY_TYPES.smallBreak.icon} ${DUTY_TYPES.smallBreak.label}</td>
+                        <td>${duty.teacherName}</td>
+                        <td>${duty.location}</td>
+                    </tr>`;
+                });
+            }
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function renderWeeklySchedule() {
+            const container = document.getElementById('weeklySchedule');
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+            const hebrewDays = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי'];
+            
+            let html = '';
+            
+            days.forEach((day, index) => {
+                const daySchedule = scheduleData.schedule[day];
+                html += `
+                    <div class="day-column">
+                        <div class="day-header">${hebrewDays[index]}</div>
+                `;
+                
+                // Morning
+                html += '<div class="duty-type">תורנות בוקר</div>';
+                daySchedule.morning.forEach(duty => {
+                    html += `
+                        <div class="duty-slot">
+                            <div class="teacher-name">${duty.teacherName}</div>
+                            <div class="location">${duty.location}</div>
+                        </div>
+                    `;
+                });
+                
+                // Big break
+                html += '<div class="duty-type">הפסקה גדולה</div>';
+                daySchedule.bigBreak.forEach(duty => {
+                    html += `
+                        <div class="duty-slot">
+                            <div class="teacher-name">${duty.teacherName}</div>
+                            <div class="location">${duty.location}</div>
+                        </div>
+                    `;
+                });
+                
+                // Small break
+                if (daySchedule.smallBreak && daySchedule.smallBreak.length > 0) {
+                    html += '<div class="duty-type">הפסקה קטנה</div>';
+                    daySchedule.smallBreak.forEach(duty => {
+                        html += `
+                            <div class="duty-slot">
+                                <div class="teacher-name">${duty.teacherName}</div>
+                                <div class="location">${duty.location}</div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += '</div>';
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function renderTeachersList() {
+            const container = document.getElementById('teachersList');
+            let html = '';
+            
+            scheduleData.teachers.forEach(teacher => {
+                const dutiesCount = countTeacherDuties(teacher.id);
+                html += `
+                    <tr>
+                        <td>${teacher.name}</td>
+                        <td>${teacher.phone}</td>
+                        <td>${dutiesCount} תורנויות</td>
+                        <td><span class="badge badge-success">פעילה</span></td>
+                    </tr>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function countTeacherDuties(teacherId) {
+            let count = 0;
+            const days = Object.values(scheduleData.schedule);
+            
+            days.forEach(day => {
+                ['morning', 'bigBreak', 'smallBreak'].forEach(type => {
+                    if (day[type]) {
+                        count += day[type].filter(d => d.teacherId === teacherId).length;
+                    }
+                });
+            });
+            
+            return count;
+        }
+
+        // Teacher search
+        document.getElementById('teacherSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#teachersList tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        function exportReport() {
+            alert('הדוח יישמר כקובץ Excel');
+            // In real implementation, this would export data to Excel
+        }
+
+        // Save data to localStorage
+        localStorage.setItem('dutyScheduleData', JSON.stringify(scheduleData));
+    </script>
+</body>
+</html>
