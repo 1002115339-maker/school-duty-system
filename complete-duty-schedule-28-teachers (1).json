@@ -1,0 +1,527 @@
+{
+  "schedule": {
+    "sunday": {
+      "morning": [
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרית",
+          "teacherId": "2", 
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה ב' בניין מרכזי", 
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שירה",
+          "teacherId": "16",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ראוון",
+          "teacherId": "17",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "קרן הלוי",
+          "teacherId": "19",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "monday": {
+      "morning": [
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "ירונה",
+          "teacherId": "9",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שרית",
+          "teacherId": "2",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עדן",
+          "teacherId": "20",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ראוון",
+          "teacherId": "17",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "tuesday": {
+      "morning": [
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "יובל דיין",
+          "teacherId": "13",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חיה",
+          "teacherId": "1",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שירה",
+          "teacherId": "16",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חיננית",
+          "teacherId": "8",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "wednesday": {
+      "morning": [
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלישבע",
+          "teacherId": "14",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "עינת",
+          "teacherId": "23",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שלי",
+          "teacherId": "24",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ג'ני",
+          "teacherId": "1",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "ליעז",
+          "teacherId": "18",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "thursday": {
+      "morning": [
+        {
+          "teacherName": "אלכסנדרה",
+          "teacherId": "6",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "יובל ב.",
+          "teacherId": "12",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "אתי",
+          "teacherId": "7",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "לורן",
+          "teacherId": "5",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "מדלן",
+          "teacherId": "22",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עדן",
+          "teacherId": "20",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "עינת",
+          "teacherId": "23",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מילי",
+          "teacherId": "25",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "קרן הלוי",
+          "teacherId": "19",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": [
+        {
+          "teacherName": "שרית",
+          "teacherId": "2",
+          "location": "חטיבה צעירה ב' קומה א'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "הדס",
+          "teacherId": "15",
+          "location": "בניין מרכזי קומה ב'",
+          "time": "11:50-12:05"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "בניין מרכזי קומה א'",
+          "time": "11:50-12:05"
+        }
+      ]
+    },
+    "friday": {
+      "morning": [
+        {
+          "teacherName": "מיכל",
+          "teacherId": "10",
+          "location": "חטיבה צעירה גן+א'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "גילי",
+          "teacherId": "11",
+          "location": "חטיבה צעירה ב'",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "שרונה",
+          "teacherId": "4",
+          "location": "קומה א' בניין מרכזי",
+          "time": "07:40-08:00"
+        },
+        {
+          "teacherName": "דניאלה",
+          "teacherId": "3",
+          "location": "קומה ב' בניין מרכזי",
+          "time": "07:40-08:00"
+        }
+      ],
+      "bigBreak": [
+        {
+          "teacherName": "ירונה",
+          "teacherId": "9",
+          "location": "חטיבה צעירה ב' חצר",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חיה",
+          "teacherId": "1",
+          "location": "חצר מקורה מזרח + שביל מזרחי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "מילי",
+          "teacherId": "25",
+          "location": "חצר מקורה מערב + שביל מערבי",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "שלי",
+          "teacherId": "24",
+          "location": "מגרש כדורסל",
+          "time": "09:50-10:15"
+        },
+        {
+          "teacherName": "חן",
+          "teacherId": "21",
+          "location": "קומת כניסה בניין מרכזי",
+          "time": "09:50-10:15"
+        }
+      ],
+      "smallBreak": []
+    }
+  },
+  "fieldAssignments": {
+    "basketball": {
+      "sunday": "ה",
+      "monday": "ו",
+      "tuesday": "ב",
+      "wednesday": "ד",
+      "thursday": "ג",
+      "friday": "ו"
+    },
+    "dodgeball": {
+      "sunday": "ב",
+      "monday": "ד",
+      "tuesday": "ה",
+      "wednesday": "ג",
+      "thursday": "ו",
+      "friday": "ד"
+    },
+    "westernPath": {
+      "sunday": "ה",
+      "monday": "ב",
+      "tuesday": "ה",
+      "wednesday": "ו",
+      "thursday": "ד",
+      "friday": "ג"
+    }
+  },
+  "teachers": [
+    { "id": "1", "name": "כהן כליפה ג'ני חיה", "phone": "052-864-9524" },
+    { "id": "2", "name": "שרון שרית", "phone": "052-330-1068" },
+    { "id": "3", "name": "סבג דניאלה", "phone": "052-808-9942" },
+    { "id": "4", "name": "שלי שרונה", "phone": "052-831-2325" },
+    { "id": "5", "name": "טליאס ז'אן לורן", "phone": "052-866-9363" },
+    { "id": "6", "name": "יאקרן אלכסנדרה", "phone": "050-952-0266" },
+    { "id": "7", "name": "מזרחי אתי", "phone": "052-831-6062" },
+    { "id": "8", "name": "פנסו חיננית", "phone": "050-373-1199" },
+    { "id": "9", "name": "בן הלל ירונה", "phone": "050-664-4040" },
+    { "id": "10", "name": "שילה מיכל", "phone": "052-646-3311" },
+    { "id": "11", "name": "ברק גילי", "phone": "052-847-5700" },
+    { "id": "12", "name": "בן דוד יובל", "phone": "052-868-2636" },
+    { "id": "13", "name": "יובל דיין", "phone": "052-610-0980" },
+    { "id": "14", "name": "אלישבע מנשה", "phone": "052-713-9328" },
+    { "id": "15", "name": "אלגלי הדס", "phone": "054-550-1003" },
+    { "id": "16", "name": "אליאס לוגסי שירה", "phone": "050-998-8484" },
+    { "id": "17", "name": "חוש רואן", "phone": "050-883-3394" },
+    { "id": "18", "name": "נגביקר ליעז", "phone": "054-463-4345" },
+    { "id": "19", "name": "הלוי קרן", "phone": "050-544-6416" },
+    { "id": "20", "name": "אטון עדן", "phone": "054-638-1810" },
+    { "id": "21", "name": "בונן חן", "phone": "050-430-8551" },
+    { "id": "22", "name": "קריטמלר מדלן", "phone": "053-700-4486" },
+    { "id": "23", "name": "חסין עינת", "phone": "050-212-6120" },
+    { "id": "24", "name": "ברוכים שלי", "phone": "054-638-2124" },
+    { "id": "25", "name": "פכטר מילי", "phone": "050-766-6639" },
+    { "id": "26", "name": "מנדלוביץ גלית", "phone": "052-274-8385" },
+    { "id": "27", "name": "הררי אלמן מריאלה", "phone": "050-656-1020" },
+    { "id": "28", "name": "חמוי ג'ניה", "phone": "050-921-9540" }
+  ]
+}
